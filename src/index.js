@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import axios from "axios";
@@ -7,6 +7,11 @@ import TodoItem from "./components/todoItem";
 function App() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
+
+  //useEffect ( callback, Array ) ** Auto 
+  useEffect(()=>{
+    getAllTodo();
+  },[])
   
 
   //API : 1 Get all todo
@@ -108,7 +113,7 @@ function App() {
         <header className="todo__add">
           <h1>
             TodoList
-            <button onClick={getAllTodo}>FETCH</button>
+            {/* <button onClick={getAllTodo}>FETCH</button> */}
           </h1>
           <input onChange={handleChangeTodo} value={newTodo} />
           <button onClick={createTodo}>add</button>
